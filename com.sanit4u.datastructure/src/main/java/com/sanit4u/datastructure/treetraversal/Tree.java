@@ -43,8 +43,6 @@ public class Tree {
 		Queue<TNode> queue = new LinkedList<TNode>();
 		// no need to get the root node anymore.
 		nodeList.remove(0);
-		Iterator<TNode> iterator = nodeList.listIterator();
-		int child = 0;
 		for (TNode tNode : nodeList) {
 
 			current.getChildren().add(tNode);
