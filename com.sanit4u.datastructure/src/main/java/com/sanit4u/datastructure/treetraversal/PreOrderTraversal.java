@@ -9,8 +9,10 @@ public class PreOrderTraversal {
 		TNode nonBinaryTree = Tree.getRandomNonBinaryTree(15);
 
 		List<Integer> preOrderTraversal = Tree.preOrderTraversal(nonBinaryTree);
+		System.out.println("PreOrder :" + preOrderTraversal);
+		List<Integer> postOrderTraversal = Tree.postOrderTraversal(nonBinaryTree);
+		System.out.println("PostOrder :" + postOrderTraversal);
 
-		System.out.println(preOrderTraversal);
 	}
 
 }

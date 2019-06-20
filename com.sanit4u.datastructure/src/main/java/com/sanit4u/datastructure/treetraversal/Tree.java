@@ -4,7 +4,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -13,6 +12,12 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Depth First Travels are PreOrder, PostOrder, IN order
+ * 
+ * @author rsa
+ *
+ */
 public class Tree {
 	private static final Random RANDOM = new SecureRandom();
 
@@ -113,7 +118,9 @@ public class Tree {
 
 			List<TNode> children = current.getChildren();
 			ArrayList<TNode> temp = new ArrayList<TNode>(children);
-			Collections.reverse(temp);
+			Collections.reverse(temp);// The idea is to insert the left at the end and insert the right elements
+										// first. This will pop up the left element first and we can collect the
+										// elements in preorder.
 			for (TNode tNode : temp) {
 				stack.push(tNode);
 			}
@@ -124,14 +131,38 @@ public class Tree {
 		return path;
 	}
 
-	static List<TNode> inOrderTraversal(TNode root) {
+	/**
+	 * Left Right Root order traversal
+	 * 
+	 * @param root
+	 * @return
+	 */
+	static List<Integer> postOrderTraversal(TNode root) {
+		System.out.println("Postordering");
+		List<Integer> list = new ArrayList<Integer>();
+		Stack<TNode> stack = new Stack<TNode>();
+		Stack<TNode> outStack = new Stack<TNode>();
 
-		return null;
-	}
+		stack.push(root);
 
-	static List<TNode> postOrderTraversal(TNode root) {
+		while (!stack.isEmpty()) {
 
-		return null;
+			TNode current = stack.pop();
+			outStack.push(current);
+
+			List<TNode> children = current.getChildren();
+
+			for (TNode tNode : children) {
+				stack.push(tNode);
+			}
+		}
+
+		while (!outStack.isEmpty()) {
+			int data = outStack.pop().getData();
+			list.add(data);
+		}
+
+		return list;
 	}
 
 }
