@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Sort an array of strings with anagrams next to each other
  * 
- * Here i Have used the comparator approach. 
+ * Here i Have used the comparator approach.
  * 
  * @author rsa
  *

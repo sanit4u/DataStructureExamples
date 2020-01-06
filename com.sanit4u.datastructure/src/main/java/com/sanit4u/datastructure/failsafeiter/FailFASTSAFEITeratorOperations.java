@@ -33,7 +33,6 @@ public class FailFASTSAFEITeratorOperations {
 
 		System.out.println("after add");
 		System.out.println(list);
-
 	}
 
 	private static void listIterator4Add(List<String> list) {

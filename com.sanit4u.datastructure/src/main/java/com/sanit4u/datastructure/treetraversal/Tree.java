@@ -37,6 +37,7 @@ public class Tree {
 		}
 		List<Integer> numOfData = Arrays.asList(arr);
 		Collections.shuffle(numOfData);
+		System.out.println("The Max children count of the a parent node is : 3");
 		System.out.println("INPUT DATA :" + Arrays.toString(arr));
 
 		// Creating the nodes
@@ -84,9 +85,9 @@ public class Tree {
 				break;
 
 			while (nodeCount > 0) {
-				TNode node = queue.peek();
+				TNode node = queue.poll();
 				System.out.print(node.getData() + " ");
-				queue.remove();
+//				queue.remove();
 
 				for (TNode tNode : node.getChildren()) {
 					queue.add(tNode);
@@ -97,6 +98,27 @@ public class Tree {
 			}
 			System.out.println();
 		}
+	}
+
+	static List<Integer> levelOrderTraverse(TNode root) {
+		System.out.println("levelOrdering");
+		Queue<TNode> queue = new LinkedList<TNode>();
+		queue.add(root);
+		List<Integer> path = new ArrayList<Integer>();
+
+		while (!queue.isEmpty()) {
+			TNode current = queue.poll();
+
+			List<TNode> children = current.getChildren();
+
+			for (TNode tNode : children) {
+				queue.add(tNode);
+			}
+
+			path.add(current.getData());
+		}
+
+		return path;
 	}
 
 	/**
@@ -120,7 +142,8 @@ public class Tree {
 			ArrayList<TNode> temp = new ArrayList<TNode>(children);
 			Collections.reverse(temp);// The idea is to insert the left at the end and insert the right elements
 										// first. This will pop up the left element first and we can collect the
-										// elements in preorder.
+										// elements in preorder. because, the stack pop up the last inserted element
+										// first.
 			for (TNode tNode : temp) {
 				stack.push(tNode);
 			}
