@@ -8,7 +8,7 @@ public class SortingExamples {
 
 		SingleLinkedList<String> singleLinkedList = new SingleLinkedList<String>();
 		singleLinkedList.append("apricot");
-		singleLinkedList.append("juhi");
+		singleLinkedList.append("dsds");
 		singleLinkedList.append("santosh");
 		singleLinkedList.append("apple");
 		singleLinkedList.append("zatharus");
